@@ -15,7 +15,7 @@ public class MemberRepository {
     @Getter
     private static final MemberRepository instance = new MemberRepository();
 
-    public MemberRepository() {
+    private MemberRepository() {
     }
 
     public Member save(Member member) {
