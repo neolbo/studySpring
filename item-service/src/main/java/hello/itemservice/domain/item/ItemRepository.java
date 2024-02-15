@@ -1,6 +1,7 @@
 package hello.itemservice.domain.item;
 
 import hello.itemservice.domain.item.DTO.ItemParamDTO;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
+@Repository
 public class ItemRepository {
     private final static Map<Long, Item> store = new ConcurrentHashMap<>();
     private static AtomicLong sequence = new AtomicLong(0L);
