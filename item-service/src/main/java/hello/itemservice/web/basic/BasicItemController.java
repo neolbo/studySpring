@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
@@ -41,10 +42,31 @@ public class BasicItemController {
      * model.addAttribute(item); 자동 추가, 생략 가능
      * 생략시 model에 저장되는 name은 클래스명 첫글자만 소문자로 등록 Item -> item
      */
-    @PostMapping("/add")
+//    @PostMapping("/add")
     public String addItem(@ModelAttribute Item item) {
         itemRepository.save(item);
         return "basic/item";
+    }
+
+    /**
+     * PRG (Post - Redirect - Get) 방식 사용하여
+     * 새로고침 시 계속되는 add 방지
+     */
+//    @PostMapping("/add")
+    public String addItemV2(@ModelAttribute Item item) {
+        itemRepository.save(item);
+        return "redirect:/basic/items/" + item.getId();
+    }
+
+    /**
+     * RedirectAttributes
+     */
+    @PostMapping("/add")
+    public String addItemV3(@ModelAttribute Item item, RedirectAttributes redirectAttributes) {
+        Item savedItem = itemRepository.save(item);
+        redirectAttributes.addAttribute("itemId", savedItem.getId());
+        redirectAttributes.addAttribute("status", true);
+        return "redirect:/basic/items/{itemId}";
     }
 
     @GetMapping("/{itemId}/edit")
