@@ -90,6 +90,10 @@ public class BasicController {
         return "basic/operation";
     }
 
+    @GetMapping("/attribute")
+    public String attribute(Model model) {
+        return "basic/attribute";
+    }
 
     @Component("helloBean")
     static class HelloBean {
