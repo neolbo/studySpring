@@ -1,8 +1,8 @@
 package hello.itemservice.domain.item;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
 /**
  *  code / displayName
@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
  *  SLOW : 느린 배송
  */
 @Data
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class DeliveryCode {
     private String code;
     private String displayName;
