@@ -1,5 +1,7 @@
 package hello.itemservice.domain.item;
 
+import hello.itemservice.web.validation.form.ItemSaveForm;
+import hello.itemservice.web.validation.form.ItemUpdateForm;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,5 +32,17 @@ public class Item {
         this.itemName = itemName;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    public Item(ItemSaveForm form) {
+        this.itemName = form.getItemName();
+        this.price = form.getPrice();
+        this.quantity = form.getQuantity();
+    }
+
+    public Item(ItemUpdateForm form) {
+        this.itemName = form.getItemName();
+        this.price = form.getPrice();
+        this.quantity = form.getQuantity();
     }
 }

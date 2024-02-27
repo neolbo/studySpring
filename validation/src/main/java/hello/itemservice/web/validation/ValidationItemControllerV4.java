@@ -62,10 +62,7 @@ public class ValidationItemControllerV4 {
         }
 
         // 검증 성공 시
-        Item item = new Item();
-        item.setItemName(form.getItemName());
-        item.setPrice(form.getPrice());
-        item.setQuantity(form.getQuantity());
+        Item item = new Item(form);
 
         Item savedItem = itemRepository.save(item);
         redirectAttributes.addAttribute("itemId", savedItem.getId());
@@ -95,10 +92,7 @@ public class ValidationItemControllerV4 {
             return "validation/v4/editForm";
         }
 
-        Item itemParam = new Item();
-        itemParam.setItemName(form.getItemName());
-        itemParam.setPrice(form.getPrice());
-        itemParam.setQuantity(form.getQuantity());
+        Item itemParam = new Item(form);
 
         itemRepository.update(itemId, itemParam);
         return "redirect:/validation/v4/items/{itemId}";
