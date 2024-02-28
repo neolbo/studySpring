@@ -33,16 +33,4 @@ public class Item {
         this.price = price;
         this.quantity = quantity;
     }
-
-    public Item(ItemSaveForm form) {
-        this.itemName = form.getItemName();
-        this.price = form.getPrice();
-        this.quantity = form.getQuantity();
-    }
-
-    public Item(ItemUpdateForm form) {
-        this.itemName = form.getItemName();
-        this.price = form.getPrice();
-        this.quantity = form.getQuantity();
-    }
 }
