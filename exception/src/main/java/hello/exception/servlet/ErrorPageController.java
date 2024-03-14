@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
-@Controller
+//@Controller
 public class ErrorPageController {
 
     // RequestDispatcher 에 상수로 정의되어있음
